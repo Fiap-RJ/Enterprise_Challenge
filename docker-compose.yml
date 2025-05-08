@@ -1,0 +1,40 @@
+services:
+  api:
+    build:
+      context: ./src/api/docker
+      dockerfile: Dockerfile
+    container_name: app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src/api:/app
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+
+  dashboard:
+    build:
+      context: ./src/dashboard/docker
+      dockerfile: Dockerfile
+    container_name: streamlit_dashboard
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./src/dashboard:/app
+    command: ["streamlit", "run", "dashboard.py", "--server.port=8501", "--server.address=0.0.0.0"]
+    depends_on:
+      - api
+
+  db:
+    image: postgres:13
+    container_name: postgres_db
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: industrial_data
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
