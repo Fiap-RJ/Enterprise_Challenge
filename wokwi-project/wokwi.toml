@@ -1,0 +1,6 @@
+[project]
+board = "esp32-wroom-32"
+
+[wokwi]
+elf = "build/challenge.ino.elf"
+firmware = "build/challenge.ino.bin"
