@@ -5,7 +5,7 @@ from services.reading_service import ReadingService
 from schemas.reading_schema import ReadingSchema
 from utils.utils import logger
 
-ReadingRouter = APIRouter(prefix="/sensors", tags=["Sensors"])
+ReadingRouter = APIRouter(prefix="/api/v1/sensors", tags=["Sensors"])
 
 
 def get_service(request: Request) -> ReadingService:

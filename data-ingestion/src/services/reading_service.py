@@ -1,12 +1,12 @@
 # src/services/reading_service.py
 from typing import Dict
-from repositories.reading_repository import ReadingRepository
+from repositories.interfaces.reading_repository_interface import IReadingRepository
 from schemas.reading_schema import ReadingSchema
 from utils.utils import logger
 
 
 class ReadingService:
-    def __init__(self, repository: ReadingRepository):
+    def __init__(self, repository: IReadingRepository):
         self.repository = repository
 
     def create_reading(self, reading_data: ReadingSchema) -> Dict:

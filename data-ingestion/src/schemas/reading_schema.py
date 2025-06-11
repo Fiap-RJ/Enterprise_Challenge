@@ -3,9 +3,9 @@ from typing import Annotated
 
 
 class ReadingSchema(BaseModel):
-    temperatura: Annotated[
+    temperature_c: Annotated[
         float, Field(example=25.0, description="Temperatura em graus Celsius")
     ]
-    umidade: Annotated[
+    humidity_pct: Annotated[
         float, Field(gt=0, lt=100, example=45.0, description="Umidade em porcentagem")
     ]

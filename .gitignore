@@ -221,3 +221,5 @@ pyrightconfig.json
 
 .vscode/
 */.ruff_cache
+
+*.db
