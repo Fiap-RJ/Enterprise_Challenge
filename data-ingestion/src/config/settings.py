@@ -1,15 +1,22 @@
 # src/config/settings.py
-from pydantic_settings import BaseSettings
-from pydantic import Field
-from dotenv import load_dotenv, find_dotenv
+from pathlib import Path
 
-load_dotenv(find_dotenv())
+from pydantic import Field
+from pydantic_settings import BaseSettings
+
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 class ApplicationSettings(BaseSettings):
+    model_config = {
+        "env_file": str(BASE_DIR / ".env"),
+        "env_file_encoding": "utf-8",
+        "case_sensitive": False,
+        "extra": "allow",
+    }
     app_name: str = Field(default="Enterprise Challenge")
     environment: str = Field(default="local")
-    db_type: str = Field(default="sqlite")
+    db_type: str = Field(default="postgres")
 
     sqlite_db_file: str = Field(default="sensor_data.db")
 
