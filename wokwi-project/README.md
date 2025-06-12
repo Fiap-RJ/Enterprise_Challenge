@@ -85,7 +85,12 @@ humidity_pct: 55.30%  |  temperature_c: 23.90 *C
 
 Após a coleta de dados por um período, seja por meio de simulação ou de um dispositivo real, é fundamental exportá-los para uma ferramenta de análise (como Python com Matplotlib/Seaborn, Microsoft Excel, Power BI ou Tableau) para gerar gráficos e extrair insights valiosos para o processo industrial.
 
-_[Inserir gráficos de linha da temperatura e umidade ao longo do tempo aqui. Por exemplo, um gráfico mostrando a variação de temperatura em um dia ou durante um ciclo de produção.]_
+![Gráfico de linha com duas variáveis](/wokwi-project/assets/grafico_linha_temp_umid.png)
+---
+![Distribuição de temperatura e umidade](/wokwi-project/assets/histograma_temp_umid.png)
+---
+![Variação da média de temperatura](/wokwi-project/assets/media_movel_temperatura.png)
+
 
 ### Insights Iniciais:
 
