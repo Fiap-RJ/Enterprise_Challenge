@@ -83,12 +83,18 @@ humidity_pct: 55.30%  |  temperature_c: 23.90 *C
 
 ## Análise Exploratória e Insights Iniciais 📊
 
-Após a coleta de dados por um período, seja por meio de simulação ou de um dispositivo real, é fundamental exportá-los para uma ferramenta de análise (como Python com Matplotlib/Seaborn, Microsoft Excel, Power BI ou Tableau) para gerar gráficos e extrair insights valiosos para o processo industrial.
+Após a coleta de dados por meio de **simulação**, estes foram importados para jupyter e gerada análise utilizando ferramentas em Python com Panda/Matplotlib/Seaborn com gráficos para extrair insights valiosos para o processo industrial.
 
+### Série Temporal (Line Plot)
+#### Objetivo: Visualizar a variação de temperatura e umidade ao longo do tempo.
 ![Gráfico de linha com duas variáveis](/wokwi-project/assets/grafico_linha_temp_umid.png)
 ---
+### Histograma
+#### Objetivo: Ver a distribuição dos valores de temperatura e umidade.
 ![Distribuição de temperatura e umidade](/wokwi-project/assets/histograma_temp_umid.png)
 ---
+### Média Móvel
+#### Objetivo: Suavizar a série de temperatura para facilitar a visualização de tendências e padrões ao longo do tempo.
 ![Variação da média de temperatura](/wokwi-project/assets/media_movel_temperatura.png)
 
 
@@ -96,9 +102,9 @@ Após a coleta de dados por um período, seja por meio de simulação ou de um d
 
 **Variação de Temperatura e Umidade:** Os gráficos de linha podem revelar padrões diários ou sazonais na temperatura e umidade do chão de fábrica. Picos ou quedas abruptas podem indicar eventos específicos, como a abertura de grandes portas, o acionamento de sistemas de ventilação, ou a operação de máquinas que geram calor excessivo.
 
-**Correlação entre Variáveis:** É possível observar se há uma correlação entre temperatura e umidade. Em muitos ambientes, o aumento da temperatura pode levar à diminuição da umidade relativa, e vice-versa. Compreender essa relação é vital para o controle climático.
+**Histograma:** O histograma é fundamental para entender a frequência com que certos valores ocorrem, permitindo avaliar a estabilidade das variáveis monitoradas. Essa análise auxilia na identificação de faixas de operação mais comuns, na detecção de possíveis outliers e no suporte à calibração de sensores e sistemas automatizados. É especialmente útil para validar se o ambiente está operando dentro dos parâmetros ideais definidos.
 
-**Detecção de Anomalias:** Flutuações anormais ou valores que extrapolam limites predefinidos (ex: temperatura de operação ideal para um equipamento) podem indicar falhas no sistema de climatização, superaquecimento de máquinas ou até mesmo problemas no sensor. Isso permite a implementação de manutenção preditiva, agindo antes que um problema maior ocorra.
+**Média móvel:** A aplicação de médias móveis permite uma visão mais clara das tendências gerais, eliminando ruídos de variações pontuais. Essa técnica é amplamente usada para acompanhar a evolução de variáveis com o tempo e é valiosa para apoiar decisões baseadas em comportamento histórico. Também pode ser usada como referência para estabelecer limites operacionais dinâmicos e acompanhar a eficácia de ações corretivas ao longo dos dias ou semanas.
 
 **Otimização de Processos:** Ao analisar os dados ao longo do tempo, pode-se identificar condições ambientais ótimas para determinados processos de fabricação, otimizando o consumo de energia dos sistemas de climatização ou a qualidade do produto final.
 
