@@ -24,11 +24,11 @@ void loop()
 
   unsigned long timestamp = millis();
 
-  Serial.print("Temperatura: ");
+  Serial.print("temperature_c: ");
   Serial.print(temperatura);
-  Serial.print("°C | Umidade: ");
+  Serial.print("°C | humidity_pct: ");
   Serial.print(umidade);
-  Serial.print("% | Timestamp: ");
+  Serial.print("% | timestamp: ");
   Serial.println(timestamp);
 
   delay(2000); // Lê a cada 2 segundos
