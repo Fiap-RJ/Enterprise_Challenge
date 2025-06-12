@@ -1,46 +1,35 @@
-#include <WiFi.h>
-#include <DHT.h>
-#include <ESPAsyncWebServer.h>
+#include "DHT.h"
 
-#define DHTPIN 15
-#define DHTTYPE DHT22
+#define DHTPIN 15     // Pino onde está ligado o DHT
+#define DHTTYPE DHT22 // depois podemos colocar um sensor com melhor precisão
 
 DHT dht(DHTPIN, DHTTYPE);
-AsyncWebServer server(80);
-
-// Wi-Fi
-const char *ssid = "SEU_WIFI";
-const char *password = "SUA_SENHA";
 
 void setup()
 {
   Serial.begin(115200);
   dht.begin();
-
-  WiFi.begin(ssid, password);
-  while (WiFi.status() != WL_CONNECTED)
-  {
-    delay(1000);
-    Serial.println("Conectando ao Wi-Fi...");
-  }
-
-  Serial.println(WiFi.localIP());
-
-  server.on("/dados", HTTP_GET, [](AsyncWebServerRequest *request)
-            {
-    float t = dht.readTemperature();
-    float h = dht.readHumidity();
-    if (isnan(t) || isnan(h)) {
-      request->send(500, "application/json", "{\"erro\":\"Falha ao ler o sensor\"}");
-      return;
-    }
-    String json = "{\"temperatura\":" + String(t) + ",\"umidade\":" + String(h) + "}";
-    request->send(200, "application/json", json); });
-
-  server.begin();
 }
 
 void loop()
 {
-  // Obrigatório, mesmo que vazio
+  float temperatura = dht.readTemperature();
+  float umidade = dht.readHumidity();
+
+  if (isnan(temperatura) || isnan(umidade))
+  {
+    Serial.println("Falha ao ler o sensor DHT!");
+    return;
+  }
+
+  unsigned long timestamp = millis();
+
+  Serial.print("Temperatura: ");
+  Serial.print(temperatura);
+  Serial.print("°C | Umidade: ");
+  Serial.print(umidade);
+  Serial.print("% | Timestamp: ");
+  Serial.println(timestamp);
+
+  delay(2000); // Lê a cada 2 segundos
 }
